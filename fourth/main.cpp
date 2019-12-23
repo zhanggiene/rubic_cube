@@ -56,6 +56,7 @@ int main( int argc, char** argv )
     //******************root of many debuging ***********//
     
     RubicCube zhuyan=RubicCube();
+    int number=0;
     while (window.isOpen())
     {
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT); // clear color must be at the start of drawing.
@@ -66,6 +67,16 @@ int main( int argc, char** argv )
             // "close requested" event: we close the window
             if (event.type == sf::Event::Closed)
                 window.close();
+            if (event.type == sf::Event::KeyPressed)
+            {
+                if (event.key.code == sf::Keyboard::Right)
+                {
+                    std::cout << "the -> key was pressed" << std::endl;
+                    number++;
+                    if (number>27) {number=0;}
+                }
+            }
+            
         }
         //******uniform data processing, so it will change every frame
         
@@ -79,7 +90,7 @@ int main( int argc, char** argv )
         float y_axis=sin(sec)*cameraHeight;
         glm::vec3 cameraPosition(camX,y_axis,camZ);
         zhuyan.setView(cameraPosition);
-        zhuyan.draw(&program);
+        zhuyan.draw(&program,number);
         
         window.display();            //sleep(seconds(5));
         
