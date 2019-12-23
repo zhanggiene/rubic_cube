@@ -8,7 +8,7 @@
 
 #version 330 core
 layout (location = 0) in vec3 aPos;
-//layout (location=1) in vec3 color;
+layout (location=1) in vec3 color;
 out vec4 W_color;
 uniform mat4 model;
 uniform mat4 view;
@@ -17,7 +17,7 @@ void main()
 {
 
 gl_Position = projection * view * model *vec4(aPos.x,aPos.y,aPos.z, 1.0);
-//W_color=vec4(color,1.0f);
-W_color=vec4(1.0f,1.0f,1.0f,0.0f);
+W_color=vec4(color,1.0f);
+//W_color=vec4(1.0f,1.0f,1.0f,0.0f);
 }
 

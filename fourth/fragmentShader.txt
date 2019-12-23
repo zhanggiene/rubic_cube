@@ -16,6 +16,6 @@ in vec4 W_color ;
 void main()
 {
 
-FragColor = vec4(1.0f,1.0f,1.0f,1.0f);
+FragColor = W_color;
 
 }

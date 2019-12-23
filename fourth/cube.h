@@ -8,6 +8,9 @@
 
 
 
+#ifndef cube_h
+#define cube_h
+
 #include <glm.hpp>
 #include "VertexBufferLayout.h"
 #include "VertexArray.hpp"
@@ -137,22 +140,11 @@ glm::mat4 model;
     void setColor(vector<int>& colors) //array of number to be colored with color.
     {
         for(auto i:colors){
-            //cout<<"ith color is "<<i<<endl;
+        cout<<"ith color is "<<i<<endl;
             
             for (int k=0;k<6;k++)
             {
                 vertices[6*(i-1)+k].color=numberTocolor(i);
-                
-                /*if(i==4)
-                {
-                    int j=6*(i-1)+k;
-                cout<<"k is  "<<j<<endl;
-                cout<<vertices[j].color.x<<" "<<vertices[j].color.y<<" "<<vertices[j].color.z<<endl;
-                    
-                }*/
-               //cout<<" i "<<i<<endl;
-                //cout<<"k is  "<<k<<endl;
-                //out<<"vertice is "<<6*(i-1)+k<<endl;
                 
                 
             }
@@ -184,6 +176,7 @@ glm::mat4 model;
         VAO_obj.combine(VBO_obj, vertex_position);
         VAO=VAO_obj.getID();// VAO is stored in public domain and it is important for drawing , so we need to pass it to public domain. it is the bug that i took very long to find.
         VAO_obj.unbind();
+        VBO_obj.unbind();
     }
     
     void Draw(Shader* program)
@@ -236,4 +229,7 @@ private:
     
     
 };
+
+
+#endif /* cube_h */
 

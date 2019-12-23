@@ -34,7 +34,7 @@ void VertexArray::combine(const VertexBuffer& vb,const VertexBufferLayout& layou
         const auto& element=elements[i];
         
         glEnableVertexAttribArray(i);
-        std::cout<<"glenablevertexattribarray("<<i<<")"<<","<<element.count<<","<<element.type<<","<<element.normalized<<","<<layout.getStride()<<","<<offset<<std::endl;
+        //std::cout<<"glenablevertexattribarray("<<i<<")"<<","<<element.count<<","<<element.type<<","<<element.normalized<<","<<layout.getStride()<<","<<offset<<std::endl;
         glVertexAttribPointer(i, element.count, element.type, element.normalized, layout.getStride(),(const void*)offset);
         offset+=element.count*4;
         

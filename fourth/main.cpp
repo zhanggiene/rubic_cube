@@ -21,6 +21,7 @@
 #include "VertexArray.hpp"
 #include "VertexBuffer.hpp"
 #include "cube.h"
+#include "rubicCube.h"
 
 using namespace sf;
 int main( int argc, char** argv )
@@ -39,7 +40,7 @@ int main( int argc, char** argv )
     settings.majorVersion = 4;
     settings.minorVersion = 1; // it means 4.1
     Window window(sf::VideoMode(widthScreen,heightScreen),"OPENGL",sf::Style::Default, settings);
-    glClearColor(1.0f,0.0f,0.0f,1.0f);
+    glClearColor(0.0f,0.0f,0.0f,1.0f);
     window.setActive(); // active the windows for OpenGL rendering,
     //draw using OpenGL commands go here.
     
@@ -54,9 +55,7 @@ int main( int argc, char** argv )
     Shader program("VertexShader.txt","fragmentShader.txt");// rmb to change the scheme home folder, root
     //******************root of many debuging ***********//
     
-    Cube one=Cube();
-    one.setupMesh();
-    
+    RubicCube zhuyan=RubicCube();
     while (window.isOpen())
     {
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT); // clear color must be at the start of drawing.
@@ -79,8 +78,8 @@ int main( int argc, char** argv )
         float camZ = cos(sec) * radius;
         float y_axis=sin(sec)*cameraHeight;
         glm::vec3 cameraPosition(camX,y_axis,camZ);
-        one.setView(cameraPosition);
-        one.Draw(&program);
+        zhuyan.setView(cameraPosition);
+        zhuyan.draw(&program);
         
         window.display();            //sleep(seconds(5));
         
