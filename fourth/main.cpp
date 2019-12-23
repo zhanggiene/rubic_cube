@@ -75,6 +75,12 @@ int main( int argc, char** argv )
                     number++;
                     if (number>27) {number=0;}
                 }
+                if (event.key.code == sf::Keyboard::Space)
+                {
+                    // std::cout << "the -> key was pressed" << std::endl;
+                    zhuyan.rotate(1);
+                    cout<<"space is pressed";
+                }
             }
             
         }
@@ -89,9 +95,8 @@ int main( int argc, char** argv )
         float camZ = cos(sec) * radius;
         float y_axis=sin(sec)*cameraHeight;
         glm::vec3 cameraPosition(camX,y_axis,camZ);
-        //zhuyan.setView(glm::vec3(10.0f,10.0f,3.0f));
-        //zhuyan.rotate3(2,UP);
-        //zhuyan.draw(&program,number);
+        zhuyan.setView(glm::vec3(10.0f,10.0f,3.0f));
+        zhuyan.draw(&program,number);
         
         window.display();            //sleep(seconds(5));
         

@@ -81,6 +81,7 @@ class Cube
 {
 public:
     /*  Mesh Data  */
+    bool isRotating;
  vector<Vertex> vertices;// it contains color and vertices one color, one vertices.
 unsigned int VAO;
 glm::mat4 view;
@@ -88,13 +89,13 @@ glm::mat4 projection;
 glm::mat4 translation;
 glm::mat4 rotation;
     glm::quat orientation;
-float angle=0.0001;
-float degree=0.0f;
+
+float degree=0.1f;
 
     
     /*  Functions  */
     // constructor
-    Cube():translation(glm::mat4(1.0f)),projection(glm::perspective(glm::radians(45.0f),(float)2080/(float)1750,0.1f,100.0f)),view(glm::mat4(1.0f)),rotation(glm::mat4(1.0f)),orientation(glm::quat(1.0f,0,0,0))
+    Cube():translation(glm::mat4(1.0f)),projection(glm::perspective(glm::radians(45.0f),(float)2080/(float)1750,0.1f,100.0f)),view(glm::mat4(1.0f)),rotation(glm::mat4(1.0f)),orientation(glm::quat(1.0f,0,0,0)),isRotating(false)
     
     {
         for (int i=0;i<36*3;i+=3){
@@ -126,28 +127,36 @@ float degree=0.0f;
         
     }
     
-    void setVerticalRotation(int dir){
+   /* void test(){
         
         //target is 1-8, 9-17
-        /*https://math.stackexchange.com/questions/18382/quaternion-and-rotation-about-an-origin-and-an-arbitrary-axis-origin-help*/
+        https://math.stackexchange.com/questions/18382/quaternion-and-rotation-about-an-origin-and-an-arbitrary-axis-origin-help
          
-        assert(dir==1 or dir==-1);
-        glm::quat aroundX = glm::angleAxis(glm::radians(degree), glm::vec3(0, 0, -1*dir));
+        //assert(dir==1 or dir==-1);
+        glm::quat aroundX = (glm::angleAxis(glm::radians(degree), glm::vec3(0, 0, -1)))*orientation;
         //model=glm::rotate(model, angle, glm::vec3(0,0,1));
         //mat4 RotationMatrix = glm::quaternion::toMat4(quaternion);
         //glm::mat4 RotationMatrix = glm::toMat4(myQuat);
         rotation= originPosition*(glm::mat4_cast(aroundX))*(NoriginPosition);
         // order matters, quaternion can only rotate around its origin, so NoriginPosition bring you back to orign , then do rotation, then bring to previous position.
-        degree+=0.1;
         
     }
-    void setHorizontalRotation(int dir){
+
+*/
+    
+    void test()
+    {
+        isRotating=true;
+        
+    }
+
+    /*void setHorizontalRotation(int dir){
     //target is 678,15 16 17 24 25 26
         assert(dir==1 or dir==-1);
         glm::quat aroundV = glm::angleAxis(glm::radians(degree), glm::vec3(0, dir*1, 0));
         rotation= originPosition*(glm::mat4_cast(aroundV))*(NoriginPosition);
         //rotation= (glm::mat4_cast(aroundV));
-        degree+=0.1;
+        
     }
     void setSideRotation(int dir){
         assert(dir==1 or dir==-1);
@@ -157,6 +166,7 @@ float degree=0.0f;
         //rotation= (glm::mat4_cast(aroundV));
         degree+=0.1;
     }
+     */
     
     
     void setView(glm::vec3 temp){
@@ -219,7 +229,10 @@ float degree=0.0f;
     }
     
     void Draw(Shader* program)
+    
     {
+        update();
+        
         program->setMatrix("model",rotation*translation);
         
         program->setMatrix("view",view);
@@ -247,7 +260,31 @@ private:
     /*  Functions    */
     // initializes all the buffer objects/arrays
     
-    
+    void update()
+    {
+        if (isRotating)
+        {
+            cout<<"doing something rotation"<<endl;
+            
+            glm::quat aroundX = (glm::angleAxis(glm::radians(degree), glm::vec3(0, 0, -1)))*orientation;
+            //model=glm::rotate(model, angle, glm::vec3(0,0,1));
+            //mat4 RotationMatrix = glm::quaternion::toMat4(quaternion);
+            //glm::mat4 RotationMatrix = glm::toMat4(myQuat);
+            rotation= originPosition*(glm::mat4_cast(aroundX))*(NoriginPosition);
+            degree+=0.1;
+            if (degree-90>0.01)
+            {
+                isRotating=false;
+                cout<<"stop rotating"<<endl;
+                orientation=aroundX;
+                degree=0;
+            }
+
+        }
+        
+        
+        
+    }
     glm::vec3  numberTocolor(int num)
     
     {

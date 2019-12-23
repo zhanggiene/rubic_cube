@@ -100,11 +100,11 @@ public:
         
     }
     
-    void rotate(int planeNumber,int dir)
+    void rotate(int planeNumber)
     {
         for (int i=0+9*planeNumber;i<9+9*planeNumber;i++)
         {
-            cubes[i].setVerticalRotation(dir);
+            cubes[i].test();
         }
         
         
@@ -240,7 +240,7 @@ public:
     
     
     
-    void rotate2(int planeNumber,int dir)
+   /* void rotate2(int planeNumber,int dir)
     {
         
         for (int i=0+3*planeNumber;i<19+3*planeNumber;i+=9)
@@ -264,6 +264,7 @@ public:
             
         }
     }
+    */
     
     
     
