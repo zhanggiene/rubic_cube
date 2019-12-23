@@ -6,7 +6,7 @@
 //  Copyright © 2019 Zhang Zhuyan. All rights reserved.
 //
 
-#include "Shader.hpp"
+#include "shader.hpp"
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
 #include <gtc/type_ptr.hpp>

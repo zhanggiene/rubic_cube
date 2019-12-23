@@ -19,10 +19,7 @@
 		603D0FBE22A4003800461229 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 603D0FBD22A4003800461229 /* OpenGL.framework */; };
 		603D0FC022A4004100461229 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 603D0FBF22A4004100461229 /* GLUT.framework */; };
 		60791BB722BCD3BD00CF8AC2 /* VertexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60791BB522BCD3BD00CF8AC2 /* VertexBuffer.cpp */; };
-		60791BBA22BCD8A800CF8AC2 /* IndexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60791BB822BCD8A800CF8AC2 /* IndexBuffer.cpp */; };
-		60DBCC2622C09E6600DF160F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60DBCC2422C09E6600DF160F /* Texture.cpp */; };
 		60FA51EF22B629B000C831B0 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60FA51ED22B629B000C831B0 /* Shader.cpp */; };
-		60FA51F222B62CB700C831B0 /* fragmentShader.txt in Sources */ = {isa = PBXBuildFile; fileRef = 60FA51F122B62CB700C831B0 /* fragmentShader.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -60,22 +57,17 @@
 		601FF35A22BDFF0800175905 /* VertexBufferLayout.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VertexBufferLayout.cpp; sourceTree = "<group>"; };
 		6025696F22B4B555007EBE25 /* STB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STB.h; sourceTree = "<group>"; };
 		6025697022B4C2F6007EBE25 /* STB.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = STB.cpp; sourceTree = "<group>"; };
-		603D0FB022A3FF2000461229 /* fourth */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = fourth; sourceTree = BUILT_PRODUCTS_DIR; };
+		603D0FB022A3FF2000461229 /* rubic cube2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "rubic cube2"; sourceTree = BUILT_PRODUCTS_DIR; };
 		603D0FB322A3FF2000461229 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		603D0FBD22A4003800461229 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		603D0FBF22A4004100461229 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		60791BB522BCD3BD00CF8AC2 /* VertexBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VertexBuffer.cpp; sourceTree = "<group>"; };
 		60791BB622BCD3BD00CF8AC2 /* VertexBuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VertexBuffer.hpp; sourceTree = "<group>"; };
-		60791BB822BCD8A800CF8AC2 /* IndexBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IndexBuffer.cpp; sourceTree = "<group>"; };
-		60791BB922BCD8A800CF8AC2 /* IndexBuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IndexBuffer.hpp; sourceTree = "<group>"; };
+		6090893C23AFC67C005E75C4 /* fragmentShader.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragmentShader.txt; sourceTree = "<group>"; };
 		6093743122BF2F69008EA34D /* VertexBufferLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VertexBufferLayout.h; sourceTree = "<group>"; };
-		609EE98F22C3B714003097CB /* fragmentShaderLight.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = fragmentShaderLight.txt; sourceTree = "<group>"; };
-		60DBCC2422C09E6600DF160F /* Texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
-		60DBCC2522C09E6600DF160F /* Texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
 		60FA51ED22B629B000C831B0 /* Shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
 		60FA51EE22B629B000C831B0 /* Shader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
 		60FA51F022B62C5300C831B0 /* VertexShader.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = VertexShader.txt; sourceTree = "<group>"; };
-		60FA51F122B62CB700C831B0 /* fragmentShader.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = fragmentShader.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +100,7 @@
 		603D0FB122A3FF2000461229 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				603D0FB022A3FF2000461229 /* fourth */,
+				603D0FB022A3FF2000461229 /* rubic cube2 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,18 +114,13 @@
 				60FA51ED22B629B000C831B0 /* Shader.cpp */,
 				60FA51EE22B629B000C831B0 /* Shader.hpp */,
 				60FA51F022B62C5300C831B0 /* VertexShader.txt */,
-				60FA51F122B62CB700C831B0 /* fragmentShader.txt */,
-				609EE98F22C3B714003097CB /* fragmentShaderLight.txt */,
+				6090893C23AFC67C005E75C4 /* fragmentShader.txt */,
 				60791BB522BCD3BD00CF8AC2 /* VertexBuffer.cpp */,
 				60791BB622BCD3BD00CF8AC2 /* VertexBuffer.hpp */,
-				60791BB822BCD8A800CF8AC2 /* IndexBuffer.cpp */,
-				60791BB922BCD8A800CF8AC2 /* IndexBuffer.hpp */,
 				601FF35722BDFBFD00175905 /* VertexArray.cpp */,
 				601FF35822BDFBFD00175905 /* VertexArray.hpp */,
 				601FF35A22BDFF0800175905 /* VertexBufferLayout.cpp */,
 				6093743122BF2F69008EA34D /* VertexBufferLayout.h */,
-				60DBCC2422C09E6600DF160F /* Texture.cpp */,
-				60DBCC2522C09E6600DF160F /* Texture.hpp */,
 			);
 			path = fourth;
 			sourceTree = "<group>";
@@ -155,9 +142,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		603D0FAF22A3FF2000461229 /* fourth */ = {
+		603D0FAF22A3FF2000461229 /* rubic cube2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 603D0FB722A3FF2000461229 /* Build configuration list for PBXNativeTarget "fourth" */;
+			buildConfigurationList = 603D0FB722A3FF2000461229 /* Build configuration list for PBXNativeTarget "rubic cube2" */;
 			buildPhases = (
 				603D0FAC22A3FF2000461229 /* Sources */,
 				603D0FAD22A3FF2000461229 /* Frameworks */,
@@ -168,9 +155,9 @@
 			);
 			dependencies = (
 			);
-			name = fourth;
+			name = "rubic cube2";
 			productName = first_meshing;
-			productReference = 603D0FB022A3FF2000461229 /* fourth */;
+			productReference = 603D0FB022A3FF2000461229 /* rubic cube2 */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -187,7 +174,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 603D0FAB22A3FF2000461229 /* Build configuration list for PBXProject "fourth" */;
+			buildConfigurationList = 603D0FAB22A3FF2000461229 /* Build configuration list for PBXProject "rubic cube2" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -199,7 +186,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				603D0FAF22A3FF2000461229 /* fourth */,
+				603D0FAF22A3FF2000461229 /* rubic cube2 */,
 			);
 		};
 /* End PBXProject section */
@@ -209,11 +196,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60FA51F222B62CB700C831B0 /* fragmentShader.txt in Sources */,
 				60791BB722BCD3BD00CF8AC2 /* VertexBuffer.cpp in Sources */,
 				601FF35922BDFBFD00175905 /* VertexArray.cpp in Sources */,
-				60DBCC2622C09E6600DF160F /* Texture.cpp in Sources */,
-				60791BBA22BCD8A800CF8AC2 /* IndexBuffer.cpp in Sources */,
 				6025697222B4C2F6007EBE25 /* STB.cpp in Sources */,
 				601FF35C22BDFF0800175905 /* VertexBufferLayout.cpp in Sources */,
 				60FA51EF22B629B000C831B0 /* Shader.cpp in Sources */,
@@ -376,7 +360,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		603D0FAB22A3FF2000461229 /* Build configuration list for PBXProject "fourth" */ = {
+		603D0FAB22A3FF2000461229 /* Build configuration list for PBXProject "rubic cube2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				603D0FB522A3FF2000461229 /* Debug */,
@@ -385,7 +369,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		603D0FB722A3FF2000461229 /* Build configuration list for PBXNativeTarget "fourth" */ = {
+		603D0FB722A3FF2000461229 /* Build configuration list for PBXNativeTarget "rubic cube2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				603D0FB822A3FF2000461229 /* Debug */,

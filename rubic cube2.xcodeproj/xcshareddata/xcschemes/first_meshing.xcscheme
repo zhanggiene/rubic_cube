@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "603D0FAF22A3FF2000461229"
-               BuildableName = "fourth"
-               BlueprintName = "fourth"
-               ReferencedContainer = "container:fourth.xcodeproj">
+               BuildableName = "rubic cube2"
+               BlueprintName = "rubic cube2"
+               ReferencedContainer = "container:rubic cube2.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "603D0FAF22A3FF2000461229"
-            BuildableName = "fourth"
-            BlueprintName = "fourth"
-            ReferencedContainer = "container:fourth.xcodeproj">
+            BuildableName = "rubic cube2"
+            BlueprintName = "rubic cube2"
+            ReferencedContainer = "container:rubic cube2.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -47,7 +47,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "/Users/zhangzhuyan/Desktop/coding/c++/computer graphics/light+class/fourth"
+      customWorkingDirectory = "/Users/zhangzhuyan/Desktop/coding/c++/computer graphics/rubic cube2/fourth"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "603D0FAF22A3FF2000461229"
-            BuildableName = "fourth"
-            BlueprintName = "fourth"
-            ReferencedContainer = "container:fourth.xcodeproj">
+            BuildableName = "rubic cube2"
+            BlueprintName = "rubic cube2"
+            ReferencedContainer = "container:rubic cube2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "603D0FAF22A3FF2000461229"
-            BuildableName = "fourth"
-            BlueprintName = "fourth"
-            ReferencedContainer = "container:fourth.xcodeproj">
+            BuildableName = "rubic cube2"
+            BlueprintName = "rubic cube2"
+            ReferencedContainer = "container:rubic cube2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
