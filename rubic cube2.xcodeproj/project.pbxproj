@@ -65,6 +65,7 @@
 		60791BB622BCD3BD00CF8AC2 /* VertexBuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VertexBuffer.hpp; sourceTree = "<group>"; };
 		6090893C23AFC67C005E75C4 /* fragmentShader.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragmentShader.txt; sourceTree = "<group>"; };
 		6093743122BF2F69008EA34D /* VertexBufferLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VertexBufferLayout.h; sourceTree = "<group>"; };
+		60AA808E23B05D9500944B39 /* cube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cube.h; sourceTree = "<group>"; };
 		60FA51ED22B629B000C831B0 /* Shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
 		60FA51EE22B629B000C831B0 /* Shader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
 		60FA51F022B62C5300C831B0 /* VertexShader.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = VertexShader.txt; sourceTree = "<group>"; };
@@ -115,6 +116,7 @@
 				60FA51EE22B629B000C831B0 /* Shader.hpp */,
 				60FA51F022B62C5300C831B0 /* VertexShader.txt */,
 				6090893C23AFC67C005E75C4 /* fragmentShader.txt */,
+				60AA808E23B05D9500944B39 /* cube.h */,
 				60791BB522BCD3BD00CF8AC2 /* VertexBuffer.cpp */,
 				60791BB622BCD3BD00CF8AC2 /* VertexBuffer.hpp */,
 				601FF35722BDFBFD00175905 /* VertexArray.cpp */,

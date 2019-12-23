@@ -20,6 +20,7 @@
 #include "VertexBufferLayout.h"
 #include "VertexArray.hpp"
 #include "VertexBuffer.hpp"
+#include "cube.h"
 
 using namespace sf;
 int main( int argc, char** argv )
@@ -53,61 +54,8 @@ int main( int argc, char** argv )
     Shader program("VertexShader.txt","fragmentShader.txt");// rmb to change the scheme home folder, root
     //******************root of many debuging ***********//
     
-    float vertices_data[] = {
-        -0.5f, -0.5f, -0.5f,//0
-        0.5f, -0.5f, -0.5f,
-        0.5f,  0.5f, -0.5f,
-        0.5f,  0.5f, -0.5f,
-        -0.5f,  0.5f, -0.5f,
-        -0.5f, -0.5f, -0.5f,// one face
-        
-        -0.5f, -0.5f,  0.5f,//6
-        0.5f, -0.5f,  0.5f,
-        0.5f,  0.5f,  0.5f,
-        0.5f,  0.5f,  0.5f,
-        -0.5f,  0.5f,  0.5f,
-        -0.5f, -0.5f,  0.5f,//two face
-        
-        -0.5f,  0.5f,  0.5f,//12
-        -0.5f,  0.5f, -0.5f,
-        -0.5f, -0.5f, -0.5f,
-        -0.5f, -0.5f, -0.5f,
-        -0.5f, -0.5f,  0.5f,
-        -0.5f,  0.5f,  0.5f,//three face
-        
-        0.5f,  0.5f,  0.5f,//18
-        0.5f,  0.5f, -0.5f,
-        0.5f, -0.5f, -0.5f,
-        0.5f, -0.5f, -0.5f,
-        0.5f, -0.5f,  0.5f,
-        0.5f,  0.5f,  0.5f,//four face
-        
-        -0.5f, -0.5f, -0.5f,//24
-        0.5f, -0.5f, -0.5f,
-        0.5f, -0.5f,  0.5f,
-        0.5f, -0.5f,  0.5f,
-        -0.5f, -0.5f,  0.5f,
-        -0.5f, -0.5f, -0.5f,// five face
-        
-        -0.5f,  0.5f, -0.5f,
-        0.5f,  0.5f, -0.5f,
-        0.5f,  0.5f,  0.5f,
-        0.5f,  0.5f,  0.5f,
-        -0.5f,  0.5f,  0.5f,
-        -0.5f,  0.5f, -0.5f,// six face
-    };
-    
-    
-    
-    VertexArray VAO=VertexArray();
-    VertexBuffer VBO=VertexBuffer(vertices_data,sizeof(vertices_data));
-    VertexBufferLayout vertex_position=VertexBufferLayout();
-    vertex_position.push<float>(3);
-    //vertex_position.push<float>(3);
-    VAO.combine(VBO, vertex_position);
-    
-    VAO.unbind();
-    VBO.unbind();
+    Cube one=Cube();
+    one.setupMesh();
     
     while (window.isOpen())
     {
@@ -131,40 +79,8 @@ int main( int argc, char** argv )
         float camZ = cos(sec) * radius;
         float y_axis=sin(sec)*cameraHeight;
         glm::vec3 cameraPosition(camX,y_axis,camZ);
-        glm::mat4 view;
-        view = glm::lookAt(cameraPosition, glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));
-        
-        
-        glm::mat4 projection=glm::mat4(1.0f);
-        projection=glm::perspective(glm::radians(45.0f),(float)widthScreen/(float)heightScreen,0.1f,100.0f);
-        
-        
-        VAO.bind();
-        program.use();
-        program.setMatrix("view",view);
-        program.setMatrix("projection",projection);        
-        // draw
-       
-        glm::mat4 model=glm::mat4(1.0f);
-        float angle = 20.0f * i;
-        model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
-              program.setMatrix("model",model);
-            glDrawArrays(GL_TRIANGLES, 0, 36);
-
-        VAO.unbind();
-     VBO.unbind();
-            
-            // ****************misttake *************
-            // must use the program, then can set the matris and stuff
-            
-            
-            
-            
-            
-            
-    
-        // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
-        // -------------------------------------------------------------------------------
+        one.setView(cameraPosition);
+        one.Draw(&program);
         
         window.display();            //sleep(seconds(5));
         
