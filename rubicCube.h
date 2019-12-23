@@ -60,11 +60,22 @@ public:
     {
         for (int i=0;i<9;i++)
         {
-            cubes[i].setRotation();
+            cubes[i].setVerticalRotation();
         }
         
         
         
+    }
+    void rotate2()
+    {
+        for (int i=6;i<25;i+=9)
+        {
+            
+            cubes[i].setHorizontalRotation();
+            cubes[i+1].setHorizontalRotation();
+            cubes[i+2].setHorizontalRotation();
+            
+        }
     }
     
     

@@ -75,7 +75,8 @@ float vertices_data[] = {
     -0.5f,  0.5f, -0.5f,// six face
 };
 
-
+const glm::mat4 originPosition = glm::translate(glm::mat4(1.0f),glm::vec3(1,1,-1));
+const glm::mat4 NoriginPosition = glm::translate(glm::mat4(1.0f),glm::vec3(-1,-1,1));
 class Cube
 {
 public:
@@ -124,15 +125,27 @@ float degree=0.0f;
         
     }
     
-    void setRotation(){
+    void setVerticalRotation(){
+        /*https://math.stackexchange.com/questions/18382/quaternion-and-rotation-about-an-origin-and-an-arbitrary-axis-origin-help*/
+         
+        
         glm::quat aroundX = glm::angleAxis(glm::radians(degree), glm::vec3(0, 0, 1));
         //model=glm::rotate(model, angle, glm::vec3(0,0,1));
         //mat4 RotationMatrix = glm::quaternion::toMat4(quaternion);
         //glm::mat4 RotationMatrix = glm::toMat4(myQuat);
-        rotation= glm::mat4_cast(aroundX);
+        rotation= originPosition*(glm::mat4_cast(aroundX))*(NoriginPosition);
+        // order matters, quaternion can only rotate around its origin, so NoriginPosition bring you back to orign , then do rotation, then bring to previous position.
         degree+=0.1;
         
     }
+    void setHorizontalRotation(){
+        glm::quat aroundV = glm::angleAxis(glm::radians(degree), glm::vec3(0, 1, 0));
+        rotation= originPosition*(glm::mat4_cast(aroundV))*(NoriginPosition);
+        //rotation= (glm::mat4_cast(aroundV));
+        degree+=0.1;
+    }
+    
+    
     void setView(glm::vec3 temp){
         view = glm::lookAt(temp, glm::vec3(0.0, 0.0, 0.0), glm::vec3(1.0, 0.0, 0.0));
         
@@ -195,6 +208,7 @@ float degree=0.0f;
     void Draw(Shader* program)
     {
         program->setMatrix("model",rotation*translation);
+        
         program->setMatrix("view",view);
         program->setMatrix("projection",projection);
         
