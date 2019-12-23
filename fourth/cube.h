@@ -87,13 +87,14 @@ glm::mat4 view;
 glm::mat4 projection;
 glm::mat4 translation;
 glm::mat4 rotation;
+    glm::quat orientation;
 float angle=0.0001;
 float degree=0.0f;
 
     
     /*  Functions  */
     // constructor
-    Cube():translation(glm::mat4(1.0f)),projection(glm::perspective(glm::radians(45.0f),(float)2080/(float)1750,0.1f,100.0f)),view(glm::mat4(1.0f)),rotation(glm::mat4(1.0f))
+    Cube():translation(glm::mat4(1.0f)),projection(glm::perspective(glm::radians(45.0f),(float)2080/(float)1750,0.1f,100.0f)),view(glm::mat4(1.0f)),rotation(glm::mat4(1.0f)),orientation(glm::quat(1.0f,0,0,0))
     
     {
         for (int i=0;i<36*3;i+=3){
@@ -109,7 +110,7 @@ float degree=0.0f;
             vertex.color=vector_color;
             vertex.Position=vector_position;
             vertices.push_back(vertex);
-            cout<<"hi"<<endl;
+            //cout<<"hi"<<endl;
         }
         
         
