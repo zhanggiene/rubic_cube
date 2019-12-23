@@ -20,6 +20,8 @@
 #include <sstream>
 #include <iostream>
 #include <vector>
+#include <gtx/transform.hpp>
+#include <gtc/quaternion.hpp>
 using namespace std;
 
 struct Vertex {
@@ -82,12 +84,15 @@ public:
 unsigned int VAO;
 glm::mat4 view;
 glm::mat4 projection;
-glm::mat4 model;
+glm::mat4 translation;
+glm::mat4 rotation;
+float angle=0.0001;
+float degree=0.0f;
 
     
     /*  Functions  */
     // constructor
-    Cube():model(glm::mat4(1.0f)),projection(glm::perspective(glm::radians(45.0f),(float)2080/(float)1750,0.1f,100.0f)),view(glm::mat4(1.0f))
+    Cube():translation(glm::mat4(1.0f)),projection(glm::perspective(glm::radians(45.0f),(float)2080/(float)1750,0.1f,100.0f)),view(glm::mat4(1.0f)),rotation(glm::mat4(1.0f))
     
     {
         for (int i=0;i<36*3;i+=3){
@@ -110,18 +115,26 @@ glm::mat4 model;
     }
     void setTranslation(int up,int right,int behind){ // this method cannot be done in a loop, only be done once.
         // it is set through experiment, y is up.
-        model=glm::mat4(1.0f);
         glm::vec3 up_vector(glm::vec3(0.0f,1.0f*up,0.0f));
         glm::vec3 right_vector(glm::vec3(1.0f*right,0.0f,0.0f));
         glm::vec3 behind_vector(glm::vec3(0.0f,0.0f,-1.0f*behind));
-        model = glm::translate(model, up_vector+right_vector+behind_vector);
+        translation = glm::translate(glm::mat4(1.0f), up_vector+right_vector+behind_vector);
         //model=glm::translate(model, glm::vec3(4.0f, 0.1f, 0.0f));
        
         
     }
     
+    void setRotation(){
+        glm::quat aroundX = glm::angleAxis(glm::radians(degree), glm::vec3(0, 0, 1));
+        //model=glm::rotate(model, angle, glm::vec3(0,0,1));
+        //mat4 RotationMatrix = glm::quaternion::toMat4(quaternion);
+        //glm::mat4 RotationMatrix = glm::toMat4(myQuat);
+        rotation= glm::mat4_cast(aroundX);
+        degree+=0.1;
+        
+    }
     void setView(glm::vec3 temp){
-        view = glm::lookAt(temp, glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));
+        view = glm::lookAt(temp, glm::vec3(0.0, 0.0, 0.0), glm::vec3(1.0, 0.0, 0.0));
         
     }
     void setView(glm::mat4 temp)
@@ -181,7 +194,7 @@ glm::mat4 model;
     
     void Draw(Shader* program)
     {
-        program->setMatrix("model",model);
+        program->setMatrix("model",rotation*translation);
         program->setMatrix("view",view);
         program->setMatrix("projection",projection);
         

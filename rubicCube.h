@@ -56,6 +56,18 @@ public:
         
     }
     
+    void rotate()
+    {
+        for (int i=0;i<9;i++)
+        {
+            cubes[i].setRotation();
+        }
+        
+        
+        
+    }
+    
+    
     
     void draw(Shader* program )
     {
