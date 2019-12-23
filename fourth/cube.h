@@ -125,13 +125,13 @@ float degree=0.0f;
         
     }
     
-    void setVerticalRotation(){
+    void setVerticalRotation(int dir){
         
         //target is 1-8, 9-17
         /*https://math.stackexchange.com/questions/18382/quaternion-and-rotation-about-an-origin-and-an-arbitrary-axis-origin-help*/
          
-        
-        glm::quat aroundX = glm::angleAxis(glm::radians(degree), glm::vec3(0, 0, 1));
+        assert(dir==1 or dir==-1);
+        glm::quat aroundX = glm::angleAxis(glm::radians(degree), glm::vec3(0, 0, -1*dir));
         //model=glm::rotate(model, angle, glm::vec3(0,0,1));
         //mat4 RotationMatrix = glm::quaternion::toMat4(quaternion);
         //glm::mat4 RotationMatrix = glm::toMat4(myQuat);
@@ -140,17 +140,18 @@ float degree=0.0f;
         degree+=0.1;
         
     }
-    void setHorizontalRotation(){
+    void setHorizontalRotation(int dir){
     //target is 678,15 16 17 24 25 26
-        glm::quat aroundV = glm::angleAxis(glm::radians(degree), glm::vec3(0, 1, 0));
+        assert(dir==1 or dir==-1);
+        glm::quat aroundV = glm::angleAxis(glm::radians(degree), glm::vec3(0, dir*1, 0));
         rotation= originPosition*(glm::mat4_cast(aroundV))*(NoriginPosition);
         //rotation= (glm::mat4_cast(aroundV));
         degree+=0.1;
     }
-    void setSideRotation(){
-        
+    void setSideRotation(int dir){
+        assert(dir==1 or dir==-1);
         //target is 2 5 8 11 14 17 
-        glm::quat aroundV = glm::angleAxis(glm::radians(degree), glm::vec3(1, 0, 0));
+        glm::quat aroundV = glm::angleAxis(glm::radians(degree), glm::vec3(-1*dir, 0, 0));
         rotation= originPosition*(glm::mat4_cast(aroundV))*(NoriginPosition);
         //rotation= (glm::mat4_cast(aroundV));
         degree+=0.1;

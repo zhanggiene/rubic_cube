@@ -10,6 +10,17 @@
 #define rubicCube_h
 
 #include"cube.h"
+#define LEFT -1
+#define RIGHT 1
+#define UP 1
+#define DOWN -1
+#define IN -1
+#define OUT 1
+
+
+
+
+
 
 vector<vector<int>> faces{
     {3,2,5},{2,5},{2,4,5},
@@ -47,6 +58,7 @@ public:
     
     
     
+    
     void setView(glm::vec3 position)
     {
        
@@ -58,36 +70,37 @@ public:
         
     }
     
-    void rotate()
+    void rotate(int planeNumber,int dir)
     {
-        for (int i=0;i<9;i++)
+        for (int i=0+9*planeNumber;i<9+9*planeNumber;i++)
         {
-            cubes[i].setVerticalRotation();
+            cubes[i].setVerticalRotation(dir);
         }
         
         
         
     }
-    void rotate2()
+    void rotate2(int planeNumber,int dir)
     {
-        for (int i=6;i<25;i+=9)
+        
+        for (int i=0+3*planeNumber;i<19+3*planeNumber;i+=9)
         {
             
-            cubes[i].setHorizontalRotation();
-            cubes[i+1].setHorizontalRotation();
-            cubes[i+2].setHorizontalRotation();
+            cubes[i].setHorizontalRotation(dir);
+            cubes[i+1].setHorizontalRotation(dir);
+            cubes[i+2].setHorizontalRotation(dir);
             
         }
     }
     
-    void rotate3()
+    void rotate3(int planeNumber,int dir)
     {
-        for (int i=2;i<21;i+=9)
+        for (int i=planeNumber;i<21;i+=9)
         {
             
-            cubes[i].setSideRotation();
-            cubes[i+3].setSideRotation();
-            cubes[i+6].setSideRotation();
+            cubes[i].setSideRotation(dir);
+            cubes[i+3].setSideRotation(dir);
+            cubes[i+6].setSideRotation(dir);
             
         }
     }
