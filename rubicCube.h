@@ -29,9 +29,11 @@ vector<vector<int>> faces{
 class RubicCube
 {
 public:
+    bool isRotating;// only start rotating when it is not rotating. 
     Cube cubes[27];
     RubicCube()
     {
+        isRotating=false;
         for (int i=0;i<27;i++)
         {
             cubes[i].setColor(faces[i]);
@@ -74,6 +76,18 @@ public:
             cubes[i].setHorizontalRotation();
             cubes[i+1].setHorizontalRotation();
             cubes[i+2].setHorizontalRotation();
+            
+        }
+    }
+    
+    void rotate3()
+    {
+        for (int i=2;i<21;i+=9)
+        {
+            
+            cubes[i].setSideRotation();
+            cubes[i+3].setSideRotation();
+            cubes[i+6].setSideRotation();
             
         }
     }

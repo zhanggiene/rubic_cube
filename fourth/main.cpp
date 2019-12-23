@@ -90,7 +90,7 @@ int main( int argc, char** argv )
         float y_axis=sin(sec)*cameraHeight;
         glm::vec3 cameraPosition(camX,y_axis,camZ);
         zhuyan.setView(glm::vec3(10.0f,10.0f,3.0f));
-        zhuyan.rotate2();
+        zhuyan.rotate3();
         zhuyan.draw(&program,number);
         
         window.display();            //sleep(seconds(5));

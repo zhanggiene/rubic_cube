@@ -126,6 +126,8 @@ float degree=0.0f;
     }
     
     void setVerticalRotation(){
+        
+        //target is 1-8, 9-17
         /*https://math.stackexchange.com/questions/18382/quaternion-and-rotation-about-an-origin-and-an-arbitrary-axis-origin-help*/
          
         
@@ -139,7 +141,16 @@ float degree=0.0f;
         
     }
     void setHorizontalRotation(){
+    //target is 678,15 16 17 24 25 26
         glm::quat aroundV = glm::angleAxis(glm::radians(degree), glm::vec3(0, 1, 0));
+        rotation= originPosition*(glm::mat4_cast(aroundV))*(NoriginPosition);
+        //rotation= (glm::mat4_cast(aroundV));
+        degree+=0.1;
+    }
+    void setSideRotation(){
+        
+        //target is 2 5 8 11 14 17 
+        glm::quat aroundV = glm::angleAxis(glm::radians(degree), glm::vec3(1, 0, 0));
         rotation= originPosition*(glm::mat4_cast(aroundV))*(NoriginPosition);
         //rotation= (glm::mat4_cast(aroundV));
         degree+=0.1;
