@@ -78,8 +78,14 @@ int main( int argc, char** argv )
                 if (event.key.code == sf::Keyboard::Space)
                 {
                     // std::cout << "the -> key was pressed" << std::endl;
-                    zhuyan.rotate(1);
+                    zhuyan.rotate3(1);
                     cout<<"space is pressed";
+                }
+                if (event.key.code == sf::Keyboard::A)
+                {
+                    // std::cout << "the -> key was pressed" << std::endl;
+                    zhuyan.resetFaces();
+                    cout<<"a is pressed";
                 }
             }
             

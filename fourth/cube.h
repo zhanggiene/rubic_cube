@@ -88,9 +88,10 @@ glm::mat4 view;
 glm::mat4 projection;
 glm::mat4 translation;
 glm::mat4 rotation;
-    glm::quat orientation;
-
+glm::quat orientation;
+glm::vec3 direction;
 float degree=0.1f;
+unsigned int mBufferID;
 
     
     /*  Functions  */
@@ -143,13 +144,56 @@ float degree=0.1f;
     }
 
 */
-    
-    void test()
+    void changeVertex()
     {
-        isRotating=true;
+        
+        for (int k=0;k<36;k++)
+        {
+            vertices[k].color=glm::vec3(0.0,0.2,0.2);
+            
+            
+        }
+        glBindVertexArray(VAO);
+         glBindBuffer(GL_ARRAY_BUFFER,mBufferID);
+        glBufferData(GL_ARRAY_BUFFER, vertices.size()*sizeof(Vertex), &vertices[0], GL_DYNAMIC_DRAW);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+        glBindVertexArray(0);
+        cout<<"changed vertex and glBufferDATA";
+        checkvertices();
+        
+        
         
     }
+    
+    
+    
+    
+    void rotatePlanar()
+    {
+        if(isRotating==false){
+        isRotating=true;
+        direction=glm::vec3(0, 0, 1);
+        }
+        
+        
+    }
+    
+    void rotateHorizontal()
+    {
+        if(isRotating==false){
+            isRotating=true;
+            direction=glm::vec3(0, 1,0);
+        }
+    }
 
+    void rotateSide()
+    {
+        if(isRotating==false){
+            isRotating=true;
+            direction=glm::vec3(1, 0,0);
+        }
+        
+    }
     /*void setHorizontalRotation(int dir){
     //target is 678,15 16 17 24 25 26
         assert(dir==1 or dir==-1);
@@ -189,7 +233,7 @@ float degree=0.1f;
     void setColor(vector<int>& colors) //array of number to be colored with color.
     {
         for(auto i:colors){
-        cout<<"ith color is "<<i<<endl;
+        //cout<<"ith color is "<<i<<endl;
             
             for (int k=0;k<6;k++)
             {
@@ -218,6 +262,7 @@ float degree=0.1f;
         
         VertexArray VAO_obj=VertexArray();
         VertexBuffer VBO_obj=VertexBuffer(&vertices[0],vertices.size()*sizeof(Vertex));
+        VBO_obj.passID(&mBufferID);
         VertexBufferLayout vertex_position=VertexBufferLayout();
         vertex_position.push<float>(3);
         vertex_position.push<float>(3);
@@ -266,7 +311,7 @@ private:
         {
             cout<<"doing something rotation"<<endl;
             
-            glm::quat aroundX = (glm::angleAxis(glm::radians(degree), glm::vec3(0, 0, -1)))*orientation;
+            glm::quat aroundX = (glm::angleAxis(glm::radians(degree), direction))*orientation;
             //model=glm::rotate(model, angle, glm::vec3(0,0,1));
             //mat4 RotationMatrix = glm::quaternion::toMat4(quaternion);
             //glm::mat4 RotationMatrix = glm::toMat4(myQuat);

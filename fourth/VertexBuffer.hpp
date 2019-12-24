@@ -16,7 +16,7 @@ public:
     VertexBuffer(const void* data,const unsigned size);
     void bind() const ;
     void unbind() const ;
-    
+    void passID(unsigned int* ID);
 private:
     unsigned int mBufferID;
     

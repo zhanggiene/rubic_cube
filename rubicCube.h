@@ -22,6 +22,8 @@
 
 
 
+
+
 vector<vector<int>> faces{
     {3,2,5},{2,5},{2,4,5},
     { 2,3},{2},{2,4},
@@ -54,7 +56,7 @@ public:
             cubes[i].setupMesh();// set color first, then setup mesh
             //cubes[i].setTranslation(0,i,0);
             cubes[i].setTranslation((int)(i%9)/3,(i%9)%3,(int)i/9);
-            
+            cubes[i].checkvertices();
         }
         //[plane][row][column]
         for (int i=0;i<3;i++)
@@ -88,7 +90,16 @@ public:
     }
         
         
+    void resetFaces()
+    {
+        for (int i=0;i<27;i++)
+        {
+            cubes[i].changeVertex();
+        }
+        
+        
     
+    }
     void setView(glm::vec3 position)
     {
        
@@ -102,11 +113,14 @@ public:
     
     void rotate(int planeNumber)
     {
-        for (int i=0+9*planeNumber;i<9+9*planeNumber;i++)
+        /*for (int i=0+9*planeNumber;i<9+9*planeNumber;i++)
         {
-            cubes[i].test();
+            cubes[i].rotatePlanar();
+            
         }
-        
+         */
+        planarRotate(planeNumber, LEFT);
+        resetFaces();
         
         
     }
@@ -240,31 +254,30 @@ public:
     
     
     
-   /* void rotate2(int planeNumber,int dir)
+    void rotate2(int planeNumber)
     {
         
         for (int i=0+3*planeNumber;i<19+3*planeNumber;i+=9)
         {
             
-            cubes[i].setHorizontalRotation(dir);
-            cubes[i+1].setHorizontalRotation(dir);
-            cubes[i+2].setHorizontalRotation(dir);
+            cubes[i].rotateHorizontal();
+            cubes[i+1].rotateHorizontal();
+            cubes[i+2].rotateHorizontal();
             
         }
     }
     
-    void rotate3(int planeNumber,int dir)
+    void rotate3(int planeNumber)
     {
         for (int i=planeNumber;i<21;i+=9)
         {
             
-            cubes[i].setSideRotation(dir);
-            cubes[i+3].setSideRotation(dir);
-            cubes[i+6].setSideRotation(dir);
+            cubes[i].rotateSide();
+            cubes[i+3].rotateSide();
+            cubes[i+6].rotateSide();
             
         }
     }
-    */
     
     
     
