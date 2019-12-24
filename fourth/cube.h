@@ -114,6 +114,8 @@ unsigned int mBufferID;
             vertices.push_back(vertex);
             //cout<<"hi"<<endl;
         }
+        cout<<"initial vertices"<<endl;
+        //checkvertices();
         
         
     }
@@ -144,22 +146,26 @@ unsigned int mBufferID;
     }
 
 */
-    void changeVertex()
+    void changeVertex(vector<int>& colors)
     {
         
+       // setColor(colors);
+        //number is 36 vertices
         for (int k=0;k<36;k++)
         {
-            vertices[k].color=glm::vec3(0.0,0.2,0.2);
+            vertices[k].color=glm::vec3(1.0,1.0,1.0);// reset everything to white first.
             
             
         }
+        setColor(colors);
+        //in order to change color, u have to bind both VAO and mBUFFERID
         glBindVertexArray(VAO);
          glBindBuffer(GL_ARRAY_BUFFER,mBufferID);
         glBufferData(GL_ARRAY_BUFFER, vertices.size()*sizeof(Vertex), &vertices[0], GL_DYNAMIC_DRAW);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
-        cout<<"changed vertex and glBufferDATA";
-        checkvertices();
+       // cout<<"changed vertex and glBufferDATA";
+        //checkvertices();
         
         
         
@@ -168,29 +174,29 @@ unsigned int mBufferID;
     
     
     
-    void rotatePlanar()
+    void rotatePlanar(int dir)
     {
         if(isRotating==false){
         isRotating=true;
-        direction=glm::vec3(0, 0, 1);
+        direction=glm::vec3(0, 0, -1*dir);
         }
         
         
     }
     
-    void rotateHorizontal()
+    void rotateHorizontal(int dir)
     {
         if(isRotating==false){
             isRotating=true;
-            direction=glm::vec3(0, 1,0);
+            direction=glm::vec3(0, -1*dir,0);
         }
     }
 
-    void rotateSide()
+    void rotateSide(int dir)
     {
         if(isRotating==false){
             isRotating=true;
-            direction=glm::vec3(1, 0,0);
+            direction=glm::vec3(-1*dir, 0,0);
         }
         
     }
@@ -309,7 +315,7 @@ private:
     {
         if (isRotating)
         {
-            cout<<"doing something rotation"<<endl;
+            //cout<<"doing something rotation"<<endl;
             
             glm::quat aroundX = (glm::angleAxis(glm::radians(degree), direction))*orientation;
             //model=glm::rotate(model, angle, glm::vec3(0,0,1));
@@ -320,7 +326,7 @@ private:
             if (degree-90>0.01)
             {
                 isRotating=false;
-                cout<<"stop rotating"<<endl;
+               // cout<<"stop rotating"<<endl;
                 orientation=aroundX;
                 degree=0;
             }

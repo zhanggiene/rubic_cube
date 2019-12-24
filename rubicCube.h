@@ -10,13 +10,8 @@
 #define rubicCube_h
 
 #include"cube.h"
-#define LEFT -1
-#define RIGHT 1// rotate 1
-#define UP 1
-#define DOWN -1 //rotate 3
-#define IN -1
-#define OUT 1// rotate 2
-
+#define CLOCKWISE 1
+#define ANTICLOCKWISE -1
 
 
 
@@ -92,10 +87,19 @@ public:
         
     void resetFaces()
     {
-        for (int i=0;i<27;i++)
+        
+        for (int i=0;i<3;i++)
         {
-            cubes[i].changeVertex();
-        }
+            for (int j=0;j<3;j++)
+            {
+                for (int k=0;k<3;k++)
+                {
+                    cubes[cubeMove[i][j][k]].changeVertex(faces[i*9+j*3+k]);
+                    //cubes[i*9+j*3+k].changeVertex(faces[cubeMove[i][j][k]]); wrong approach
+                   cout<<"changing cube"<<i*9+j*3+k<<"to "<<cubeMove[i][j][k]<<endl;
+                    //cubes[i*9+j*3+k].changeVertex();
+                    
+                }}}
         
         
     
@@ -111,17 +115,17 @@ public:
         
     }
     
-    void rotate(int planeNumber)
+    void rotate(int planeNumber,int dir)
     {
-        /*for (int i=0+9*planeNumber;i<9+9*planeNumber;i++)
-        {
-            cubes[i].rotatePlanar();
-            
-        }
-         */
-        planarRotate(planeNumber, LEFT);
-        resetFaces();
         
+        for (int i=0;i<3;i++)
+        {
+            for (int k=0;k<3;k++)
+                
+                cubes[cubeMove[planeNumber][i][k]].rotatePlanar(dir);
+        }
+        planarRotate(planeNumber,dir);
+        print();
         
     }
     void planarRotate(int n,int dir)
@@ -136,7 +140,7 @@ public:
         temp.push_back(cubeMove[n][2][0]);
         temp.push_back(cubeMove[n][1][0]);
         
-        if (dir==LEFT)
+        if (dir== ANTICLOCKWISE)
         {
             cubeMove[n][0][0]=temp[6];
             cubeMove[n][0][1]=temp[7];
@@ -147,7 +151,7 @@ public:
             cubeMove[n][2][0]=temp[4];
             cubeMove[n][1][0]=temp[5];
         }
-        else
+        else if(dir== CLOCKWISE)
         {
             cubeMove[n][0][0]=temp[2];
             cubeMove[n][0][1]=temp[3];
@@ -161,6 +165,8 @@ public:
             
             
         }
+        else
+            assert("something is wrong");
         
         
         
@@ -178,7 +184,7 @@ public:
         temp.push_back(cubeMove[2][n][0]);
         temp.push_back(cubeMove[1][n][0]);
         
-        if (dir==OUT)
+        if (dir== ANTICLOCKWISE)
         {
             cubeMove[0][n][0]=temp[6];
             cubeMove[0][n][1]=temp[7];
@@ -189,7 +195,7 @@ public:
             cubeMove[2][n][0]=temp[4];
             cubeMove[1][n][0]=temp[5];
         }
-        else
+        else if (dir==CLOCKWISE)
         {
             cubeMove[0][n][0]=temp[2];
             cubeMove[0][n][1]=temp[3];
@@ -203,6 +209,8 @@ public:
             
             
         }
+        else
+            assert("something is wrong");
         
         
         
@@ -220,7 +228,7 @@ public:
         temp.push_back(cubeMove[2][0][n]);
         temp.push_back(cubeMove[1][0][n]);
         
-        if (dir==UP)
+        if (dir== CLOCKWISE)
         {
             cubeMove[0][0][n]=temp[6];
             cubeMove[0][1][n]=temp[7];
@@ -231,7 +239,7 @@ public:
             cubeMove[2][0][n]=temp[4];
             cubeMove[1][0][n]=temp[5];
         }
-        else
+        else if (dir== ANTICLOCKWISE)
         {
             cubeMove[0][0][n]=temp[2];
             cubeMove[0][1][n]=temp[3];
@@ -241,10 +249,11 @@ public:
             cubeMove[2][1][n]=temp[7];
             cubeMove[2][0][n]=temp[0];
             cubeMove[1][0][n]=temp[1];
-            
-            
-            
+
         }
+        
+        else
+            assert("something is wrong");
         
         
         
@@ -254,29 +263,30 @@ public:
     
     
     
-    void rotate2(int planeNumber)
+    void rotate2(int planeNumber,int dir)
     {
         
-        for (int i=0+3*planeNumber;i<19+3*planeNumber;i+=9)
+        for (int i=0;i<3;i++)
         {
+            for (int k=0;k<3;k++)
             
-            cubes[i].rotateHorizontal();
-            cubes[i+1].rotateHorizontal();
-            cubes[i+2].rotateHorizontal();
-            
+            cubes[cubeMove[i][planeNumber][k]].rotateHorizontal(dir);
         }
+        HRotate(planeNumber,dir);
+        print();
     }
     
-    void rotate3(int planeNumber)
+    void rotate3(int planeNumber,int dir)
     {
-        for (int i=planeNumber;i<21;i+=9)
+        
+        for (int i=0;i<3;i++)
         {
-            
-            cubes[i].rotateSide();
-            cubes[i+3].rotateSide();
-            cubes[i+6].rotateSide();
-            
+            for (int k=0;k<3;k++)
+                
+                cubes[cubeMove[i][k][planeNumber]].rotateSide(dir);
         }
+        SRotate(planeNumber,dir);
+        print();
     }
     
     
