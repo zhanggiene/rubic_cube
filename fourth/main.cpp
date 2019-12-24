@@ -82,7 +82,46 @@ int main( int argc, char** argv )
                     zhuyan.rotate(0,CLOCKWISE);
                     cout<<"a is pressed";
                 }
-                if (event.key.code == sf::Keyboard::Space)
+                if (event.key.code == sf::Keyboard::S)
+                {
+                    // std::cout << "the -> key was pressed" << std::endl;
+                    zhuyan.rotate(1,CLOCKWISE);
+                    cout<<"a is pressed";
+                }
+                if (event.key.code == sf::Keyboard::D)
+                {
+                    // std::cout << "the -> key was pressed" << std::endl;
+                    zhuyan.rotate(2,CLOCKWISE);
+                    cout<<"a is pressed";
+                }
+                if (event.key.code == sf::Keyboard::F)
+                {
+                    // std::cout << "the -> key was pressed" << std::endl;
+                    zhuyan.rotate2(0,CLOCKWISE);
+                    cout<<"a is pressed";
+                }
+                if (event.key.code == sf::Keyboard::G)
+                {
+                    // std::cout << "the -> key was pressed" << std::endl;
+                    zhuyan.rotate2(1,CLOCKWISE);
+                }
+                if (event.key.code == sf::Keyboard::H)
+                {
+                    // std::cout << "the -> key was pressed" << std::endl;
+                    zhuyan.rotate2(2,CLOCKWISE);
+                }
+                if (event.key.code == sf::Keyboard::J)
+                {
+                    // std::cout << "the -> key was pressed" << std::endl;
+                    zhuyan.rotate3(0,CLOCKWISE);
+                }
+                if (event.key.code == sf::Keyboard::K)
+                {
+                    // std::cout << "the -> key was pressed" << std::endl;
+                    zhuyan.rotate3(1,CLOCKWISE);
+                }
+
+                if (event.key.code == sf::Keyboard::L)
                 {
                     // std::cout << "the -> key was pressed" << std::endl;
                     zhuyan.rotate3(2,CLOCKWISE);

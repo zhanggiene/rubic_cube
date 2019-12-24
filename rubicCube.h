@@ -117,14 +117,15 @@ public:
     
     void rotate(int planeNumber,int dir)
     {
-        
+       
+        planarRotate(planeNumber,dir);
         for (int i=0;i<3;i++)
         {
             for (int k=0;k<3;k++)
                 
                 cubes[cubeMove[planeNumber][i][k]].rotatePlanar(dir);
         }
-        planarRotate(planeNumber,dir);
+        
         print();
         
     }
@@ -265,27 +266,27 @@ public:
     
     void rotate2(int planeNumber,int dir)
     {
-        
+        HRotate(planeNumber,dir);
         for (int i=0;i<3;i++)
         {
             for (int k=0;k<3;k++)
             
             cubes[cubeMove[i][planeNumber][k]].rotateHorizontal(dir);
         }
-        HRotate(planeNumber,dir);
+        
         print();
     }
     
     void rotate3(int planeNumber,int dir)
     {
-        
+         SRotate(planeNumber,dir);
         for (int i=0;i<3;i++)
         {
             for (int k=0;k<3;k++)
                 
                 cubes[cubeMove[i][k][planeNumber]].rotateSide(dir);
         }
-        SRotate(planeNumber,dir);
+       
         print();
     }
     
